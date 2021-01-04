@@ -49,19 +49,21 @@
                                 <h3>Lectures</h3>
                             </div>
                         </div>
-                        <?php
-                        // $title = 'Web Develop';
-                        $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                        $query = " SELECT * FROM course ";
-                        $result = mysqli_query($con, $query);
 
-                        // $quariy = $mysqli->query("select * from course ");
-                        while ($row = mysqli_fetch_array($result)) :
+                        <div class=" container">
+                            <div class="row">
+                                <?php
+                                // $title = 'Web Develop';
+                                $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                                $query = " SELECT * FROM course ";
+                                $result = mysqli_query($con, $query);
 
-                        ?>
-                            <main class=" container">
-                                <div class="row">
-                                    <div class=" col-12 col-md-10 offset-1">
+                                // $quariy = $mysqli->query("select * from course ");
+                                while ($row = mysqli_fetch_array($result)) :
+
+                                ?>
+
+                                    <div class=" col-12 col-md-6" style="margin-top:4px ;">
                                         <div class="card">
                                             <h4 class="card-header">
 
@@ -75,18 +77,24 @@
                                                         <?php echo $row['CourseName'] ?>
                                                     </li>
                                                 </ul>
-                                                
+
                                             </div>
 
                                             <div class="card-footer"><?php echo $row['CourseName'] ?></div>
                                         </div>
                                     </div>
-                                </div>
-                            </main>
-
-                        <?php
-                        endwhile;
+                                    <?php
+                                endwhile;
                         ?>
+                            </div>
+                           
+                        </div>
+                        
+                        
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -100,51 +108,56 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title ">Add Student</h4>
+                    <h4 class="modal-title ">View Assignments</h4>
                     <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="row row-content ">
                         <div class="col-12 col-md-10 offset-1">
                             <div>
-                                <h3>Add a Student record</h3>
+                                <h3>Assignments</h3>
                             </div>
                             <!-- <form method="POST" action="addUser.php"> -->
-                            <form>
-                                <div class="row form-group">
-                                    <label for="forEmail" class="clo-12 col-md-4">
-                                        <b>Student ID</b>
-                                    </label>
-                                    <div class="col-12 col-md-8">
-                                        <input type="ID" class="form-control " id="teachID" name="teachID" placeholder="Student's ID" required>
-                                    </div>
-                                    <label for="tName" class="clo-12 col-md-4">
-                                        <b>Student Name</b>
-                                    </label>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control " id="search" name="fname" placeholder="Student's Name" required>
-                                    </div>
-                                    <label for="lname" class="clo-12 col-md-4">
-                                        <b>Student's Degree Program</b>
-                                    </label>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control " id="search" name="lname" placeholder="Student's Degree Program" required>
-                                    </div>
-                                    <label for="lname" class="clo-12 col-md-4">
-                                        <b>Student's Semester</b>
-                                    </label>
-                                    <div class="col-12 col-md-8">
-                                        <input type="text" class="form-control " id="search" name="lname" placeholder="Student's Semester" required>
-                                    </div>
-                                    <div class="col-12 col-md-11">
-                                        <div>
-                                            <br>
-                                            <button type="submit" id="addUser" value="submit" name="adduser" class="btn btn-info">Click here to add Teacher! </button>
-                                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Cancel</button>
+                            <div class=" container">
+                            <div class="row">
+                                <?php
+                                // $title = 'Web Develop';
+                                $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                                $query = " SELECT * FROM course ";
+                                $result = mysqli_query($con, $query);
+
+                                // $quariy = $mysqli->query("select * from course ");
+                                while ($row = mysqli_fetch_array($result)) :
+
+                                ?>
+
+                                    <div class=" col-12 col-md-6" style="margin-top:4px ;">
+                                        <div class="card">
+                                            <h4 class="card-header">
+
+                                            </h4>
+                                            <div class="card-body" style="color: black;">
+                                                <ul>
+                                                    <li><?php echo $row['CourseCode'] ?>
+
+                                                    </li>
+                                                    <li>
+                                                        <?php echo $row['CourseName'] ?>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                    <?php
+                                endwhile;
+                        ?>
+                            </div>
+                           
+                        </div>
+                        
                         </div>
                     </div>
                     <div class="form-row">
@@ -243,7 +256,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="about-header">
             <div class="col-lg-12 text-center">
-                <h1>Management in General List</h1>
+                <h1>Student View</h1>
                 <hr style="background-color: #eee;
             border: 0 none;
             color: #eee;

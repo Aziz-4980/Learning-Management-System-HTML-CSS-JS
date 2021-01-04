@@ -46,17 +46,19 @@ class DBFacadeStudent
 
               $row = mysqli_fetch_assoc($res);
 
-               $manager = new Student($row['StudentID'], $row['DeptNo'], $row['Email'], $row['SemesterID	'] ,$row['StudentName'],$row['program'],$row['SemesterNo']);
-              $manager->Display();
+               $student = new Student($row['StudentID'], $row['DeptNo'], $row['Email'], $row['SemesterID	'] ,$row['StudentName'],$row['Program'],$row['SemesterNo']);
+            //   $student->get;
 
-            //    $name=$manager->getDeptName();
-             
+            $prog = $student->getProgram();
+            $deptNo = $student->getDeptNo();             
             
 
-            //    $_SESSION['manager'] = serialize($name);
+               $_SESSION['studentProgram'] = serialize($prog);
+               $_SESSION['studentDept'] = serialize($deptNo);
+
             
             
-             header("location: ../studentView.php");
+             header("location: ../student.php");
                     
 
            }
