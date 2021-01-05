@@ -294,7 +294,7 @@
                 if (isset($_GET["data"])) {
                     $data = $_GET["data"];
 
-                    echo $data;
+                    // echo $data;
                     // $data2 = $_GET["data2"];
                 } else {
                     echo "nothing";
