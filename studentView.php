@@ -54,9 +54,18 @@
                             <div class="row">
                                 <?php
                                 // $title = 'Web Develop';
+                                
+                                if (isset($_GET["data"])) {
+                                    $data = $_GET["data"];
+                                }else{
+
+                                }
+                                
                                 $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                                $query = " SELECT * FROM course ";
+                                $query = " SELECT * FROM lecture where CourseCode = $data";
                                 $result = mysqli_query($con, $query);
+
+                                
 
                                 // $quariy = $mysqli->query("select * from course ");
                                 while ($row = mysqli_fetch_array($result)) :
@@ -74,23 +83,27 @@
 
                                                     </li>
                                                     <li>
-                                                        <?php echo $row['CourseName'] ?>
+                                                        <?php echo $row['LectureTopic'] ?>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="./downloadLecture.php?id = <?php echo $row['CourseCode']?> "><button class="button btn-bg btn-dark">Click here to download</button></a>
+
                                                     </li>
                                                 </ul>
 
                                             </div>
 
-                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
                                         </div>
                                     </div>
-                                    <?php
+                                <?php
                                 endwhile;
-                        ?>
+                                ?>
                             </div>
-                           
+
                         </div>
-                        
-                        
+
+
 
 
 
@@ -117,47 +130,50 @@
                             <div>
                                 <h3>Assignments</h3>
                             </div>
+
+
+
                             <!-- <form method="POST" action="addUser.php"> -->
                             <div class=" container">
-                            <div class="row">
-                                <?php
-                                // $title = 'Web Develop';
-                                $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                                $query = " SELECT * FROM course ";
-                                $result = mysqli_query($con, $query);
-
-                                // $quariy = $mysqli->query("select * from course ");
-                                while ($row = mysqli_fetch_array($result)) :
-
-                                ?>
-
-                                    <div class=" col-12 col-md-6" style="margin-top:4px ;">
-                                        <div class="card">
-                                            <h4 class="card-header">
-
-                                            </h4>
-                                            <div class="card-body" style="color: black;">
-                                                <ul>
-                                                    <li><?php echo $row['CourseCode'] ?>
-
-                                                    </li>
-                                                    <li>
-                                                        <?php echo $row['CourseName'] ?>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-
-                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
-                                        </div>
-                                    </div>
+                                <div class="row">
                                     <?php
-                                endwhile;
-                        ?>
+                                    // $title = 'Web Develop';
+                                    $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                                    $query = " SELECT * FROM course ";
+                                    $result = mysqli_query($con, $query);
+
+                                    // $quariy = $mysqli->query("select * from course ");
+                                    while ($row = mysqli_fetch_array($result)) :
+
+                                    ?>
+
+                                        <div class=" col-12 col-md-6" style="margin-top:4px ;">
+                                            <div class="card">
+                                                <h4 class="card-header">
+
+                                                </h4>
+                                                <div class="card-body" style="color: black;">
+                                                    <ul>
+                                                        <li><?php echo $row['CourseCode'] ?>
+
+                                                        </li>
+                                                        <li>
+                                                            <?php echo $row['CourseName'] ?>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+
+                                                <div class="card-footer"><?php echo $row['CourseName'] ?></div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    endwhile;
+                                    ?>
+                                </div>
+
                             </div>
-                           
-                        </div>
-                        
+
                         </div>
                     </div>
                     <div class="form-row">
@@ -232,6 +248,20 @@
         <div class="about-header">
             <div class="col-lg-12 text-center">
                 <h1>Student View</h1>
+
+
+                <?php
+                if (isset($_GET["data"])) {
+                    $data = $_GET["data"];
+
+                    echo $data;
+                    // $data2 = $_GET["data2"];
+                } else {
+                    echo "nothing";
+                }
+                ?>
+
+
                 <hr style="background-color: #eee;
             border: 0 none;
             color: #eee;

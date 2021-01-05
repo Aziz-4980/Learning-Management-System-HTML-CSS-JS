@@ -54,10 +54,7 @@ class DBFacadeTeacher
 
             //    $name=$manager->getDeptName();
              
-            AB TU NA PAGA HA KYA KARNA HA?
-            BTA
-            AIK MIN ZAROORI LOGO KA MESSAGE AYA HA UNHAI REPLY DA DON Xd
-            ACHA :P
+           
 
             //    $_SESSION['manager'] = serialize($name);
             

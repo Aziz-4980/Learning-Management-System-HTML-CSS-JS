@@ -108,7 +108,12 @@ session_start();
 
                                         </div>
 
-                                        <div class="card-footer"><?php echo $row['CourseName'] ?></div>
+                                        <div class="card-footer">
+
+                                            <a href="./studentView.php?data=<?php echo $row['CourseCode']?>" ><button class="button btn-bg btn-dark"  style="width: 100%;" >GO</button></a>
+                                         
+                                        
+                                        </div>
                                     </div>
                                 </div>
                             <?php
