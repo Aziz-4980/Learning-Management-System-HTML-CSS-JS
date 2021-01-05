@@ -49,14 +49,20 @@ class DBFacadeTeacher
                $manager = new Teacher($row['TeacherID'], $row['DeptNo'], $row['Email'], $row['TeacherName'] ,$row['Designation']);
               $manager->Display();
 
+              // echo $manager->getTeacherID();
+
+
             //    $name=$manager->getDeptName();
              
-            
+            AB TU NA PAGA HA KYA KARNA HA?
+            BTA
+            AIK MIN ZAROORI LOGO KA MESSAGE AYA HA UNHAI REPLY DA DON Xd
+            ACHA :P
 
             //    $_SESSION['manager'] = serialize($name);
             
             
-             header("location: ../teacherView.php");
+              header("location: ../teacherView.php");
                     
 
            }
