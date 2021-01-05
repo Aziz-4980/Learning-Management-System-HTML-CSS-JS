@@ -38,6 +38,10 @@ class Student
 
 	} */
 
+	function setID($iddd){
+		$this->SemesterID = $iddd;
+	}
+
 	function getStudentName()
 	{
 		return $this->StudentName;

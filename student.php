@@ -56,15 +56,34 @@ session_start();
             <div class="row row-content ">
                 <div class="col-12 col-md-10 offset-1">
                     <div>
-                        <h3>Assignments</h3>
+                        <h3>Courses</h3>
                     </div>
                     <!-- <form method="POST" action="addUser.php"> -->
                     <div class=" container">
                         <div class="row">
                             <?php
                             // $title = 'Web Develop';
+
+                            $idd = unserialize($_SESSION['studentProgram']);
+                            // $var     = $idd->getDeptNo();
+
+                            // $var = $_SESSION['studentProgram']
+                            // print_r($_SESSION);
+                            // print_r($idd);
+                            // if($idd == ''){
+                            //     echo '<h3>No Courses Registered<?h3>';
+                            // }
+
+
+                            // if(!isset($_COOKIE[$cookie_name])) {
+                            //     echo "Cookie named '" . $cookie_name . "' is not set!";
+                            //   } else {
+                            //     echo "Cookie '" . $cookie_name . "' is set!<br>";
+                            //     echo "Value is: " . $_COOKIE[$cookie_name];
+                            //   }
+
                             $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                            $query = " SELECT * FROM course ";
+                            $query = " SELECT * FROM registeredCourse where StudentID = '$idd' ";
                             $result = mysqli_query($con, $query);
 
                             // $quariy = $mysqli->query("select * from course ");

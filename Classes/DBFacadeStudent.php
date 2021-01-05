@@ -41,20 +41,33 @@ class DBFacadeStudent
 
            if($row['Password']== "$pwd")
            {
-              $query2 = " SELECT * FROM student WHERE StudentID =  '$mail' ";
+              $query2 = " SELECT * FROM student WHERE Email =  '$mail' ";
               $res = mysqli_query($conn,$query2);
 
               $row = mysqli_fetch_assoc($res);
 
-               $student = new Student($row['StudentID'], $row['DeptNo'], $row['Email'], $row['SemesterID	'] ,$row['StudentName'],$row['Program'],$row['SemesterNo']);
+               $student = new Student($row['StudentID'], $row['DeptNo'], $row['Email'], $row['SemesterID'] ,$row['StudentName'],$row['Program'],$row['SemesterNo']);
             //   $student->get;
 
-            $prog = $student->getProgram();
-            $deptNo = $student->getDeptNo();             
-            
+            // echo $row['StudentID'];
+            // $student->Display();
+            // $prog = $student->getProgram();
+            // $deptNo = $student->getDeptNo();             
+               // $student->setID($mail);
+            $id = $student->getStudentID();
+            //    echo "$id";
+            // session_destroy();
 
-               $_SESSION['studentProgram'] = serialize($prog);
-               $_SESSION['studentDept'] = serialize($deptNo);
+               $_SESSION['studentProgram'] = serialize($id);
+               // $_SESSION['studentDept'] = serialize($deptNo);
+
+
+
+
+                              
+               // $cookie_name = "id";
+               // $cookie_value = "$id";
+               // setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 
             
             
