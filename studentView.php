@@ -32,6 +32,7 @@
 
 
     <?php include "./components/Header.html" ?>
+    <?php include "./handleAssignmnetUpload.php"?>
 
     <!-- *******************view Lecture****************************-->
     <div id="viewLectureModal" class="modal fade" role="dialog">
@@ -54,18 +55,17 @@
                             <div class="row">
                                 <?php
                                 // $title = 'Web Develop';
-                                
+
                                 if (isset($_GET["data"])) {
                                     $data = $_GET["data"];
-                                }else{
-
+                                } else {
                                 }
-                                
+
                                 $con =  new mysqli("localhost", "root", "", "learning_management_system");
                                 $query = " SELECT * FROM lecture where CourseCode = $data";
                                 $result = mysqli_query($con, $query);
 
-                                
+
 
                                 // $quariy = $mysqli->query("select * from course ");
                                 while ($row = mysqli_fetch_array($result)) :
@@ -87,7 +87,7 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="./downloadLecture.php?id = <?php echo $row['CourseCode']?> "><button class="button btn-bg btn-dark">Click here to download</button></a>
+                                                        <a href="./downloadLecture.php?id = <?php echo $row['CourseCode'] ?> "><button class="button btn-bg btn-dark">Click here to download</button></a>
 
                                                     </li>
                                                 </ul>
@@ -139,7 +139,7 @@
                                     <?php
                                     // $title = 'Web Develop';
                                     $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                                    $query = " SELECT * FROM course ";
+                                    $query = " SELECT * FROM assignment where CourseCode = $data ";
                                     $result = mysqli_query($con, $query);
 
                                     // $quariy = $mysqli->query("select * from course ");
@@ -147,24 +147,40 @@
 
                                     ?>
 
-                                        <div class=" col-12 col-md-6" style="margin-top:4px ;">
+                                        <div class=" col-12 col-md-6" style="margin-top:4px ; color: black;">
                                             <div class="card">
-                                                <h4 class="card-header">
+                                                <div class="card-header">
 
-                                                </h4>
+                                                    <h4>Assignment No : <?php echo $row['AssignmentNo'] ?></h4>
+                                                </div>
                                                 <div class="card-body" style="color: black;">
                                                     <ul>
                                                         <li><?php echo $row['CourseCode'] ?>
 
                                                         </li>
+
                                                         <li>
-                                                            <?php echo $row['CourseName'] ?>
+                                                            <?php echo $row['AssignmentTopic'] ?>
                                                         </li>
+                                                        <li>
+                                                            <?php echo $row['DueDateTime'] ?>
+                                                        </li>
+
+
                                                     </ul>
+                                                    <div class="card-footer">
+                                                        <form action="studentView.php" method="POST" enctype="multipart/form-data">
+                                                            <input type="file" name="myfile"><br>
+                                                            <button class="button btn-bg btn-primary"type="submit" name="save">Upload</button>
+
+                                                            
+                                                        </form>
+
+
+                                                    </div>
 
                                                 </div>
 
-                                                <div class="card-footer"><?php echo $row['CourseName'] ?></div>
                                             </div>
                                         </div>
                                     <?php
