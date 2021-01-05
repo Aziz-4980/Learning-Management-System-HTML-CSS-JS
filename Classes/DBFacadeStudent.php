@@ -60,6 +60,8 @@ class DBFacadeStudent
 
                $_SESSION['studentProgram'] = serialize($id);
                // $_SESSION['studentDept'] = serialize($deptNo);
+               // $_SESSION['studentID'] = serialize($id);
+
 
 
 

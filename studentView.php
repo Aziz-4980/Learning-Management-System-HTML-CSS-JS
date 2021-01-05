@@ -1,4 +1,6 @@
+<?php session_start();?>
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -32,7 +34,7 @@
 
 
     <?php include "./components/Header.html" ?>
-    <?php include "./handleAssignmnetUpload.php"?>
+    <?php include "./handleAssignmnetUpload.php" ?>
 
     <!-- *******************view Lecture****************************-->
     <div id="viewLectureModal" class="modal fade" role="dialog">
@@ -138,6 +140,11 @@
                                 <div class="row">
                                     <?php
                                     // $title = 'Web Develop';
+
+                                    if (isset($_GET["data"])) {
+                                        $data = $_GET["data"];
+                                    } else {
+                                    }
                                     $con =  new mysqli("localhost", "root", "", "learning_management_system");
                                     $query = " SELECT * FROM assignment where CourseCode = $data ";
                                     $result = mysqli_query($con, $query);
@@ -169,11 +176,18 @@
 
                                                     </ul>
                                                     <div class="card-footer">
-                                                        <form action="studentView.php" method="POST" enctype="multipart/form-data">
+                                                        <form  method="POST" enctype="multipart/form-data">
                                                             <input type="file" name="myfile"><br>
-                                                            <button class="button btn-bg btn-primary"type="submit" name="save">Upload</button>
+                                                            <input type="hidden" name="AssignmentNo" value="<?php echo $row['AssignmentNo']?>">
+                                                            <input type="hidden" name="StudentID" value="<?php echo unserialize($_SESSION['studentProgram'])?>">
 
-                                                            
+                                                            <button class="button btn-bg btn-primary" type="submit" name="save">Upload</button>
+
+                                                            <?php 
+
+                                                                    $_SESSION['uploadAss'] = serialize($row['AssignmentNo']);
+                                                            ?>
+
                                                         </form>
 
 
