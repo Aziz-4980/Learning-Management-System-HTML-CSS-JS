@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -35,6 +35,8 @@
 
     <?php include "./components/Header.html" ?>
     <?php include "./handleAssignmnetUpload.php" ?>
+    <?php include "./handleAssignmnetUpdate.php" ?>
+
 
     <!-- *******************view Lecture****************************-->
     <div id="viewLectureModal" class="modal fade" role="dialog">
@@ -87,10 +89,9 @@
                                                     <li>
                                                         <?php echo $row['LectureTopic'] ?>
                                                     </li>
-
+ 
                                                     <li>
-                                                        <a href="./downloadLecture.php?id = <?php echo $row['CourseCode'] ?> "><button class="button btn-bg btn-dark">Click here to download</button></a>
-
+                                                  <a href="./handleLectureDownload.php?id = <?php echo $row['CourseCode']?>"><button type="submit" id="btn" name="btn" class="button btn-bg btn-dark" >Download</button></a>
                                                     </li>
                                                 </ul>
 
@@ -176,20 +177,29 @@
 
                                                     </ul>
                                                     <div class="card-footer">
-                                                        <form  method="POST" enctype="multipart/form-data">
+                                                        <form method="POST" enctype="multipart/form-data">
+                                                            <input type="file" name="myfile"><br>
+                                                            <input type="hidden" name="AssignmentNo" value="<?php echo $row['AssignmentNo'] ?>">
+                                                            <input type="hidden" name="StudentID" value="<?php echo unserialize($_SESSION['studentProgram']) ?>">
+
+                                                            <button class="button btn-bg btn-primary" type="submit" name="save">Upload</button>
+
+                                                            <!-- <?php
+
+                                                                    $_SESSION['uploadAss'] = serialize($row['AssignmentNo']);
+                                                                    ?> -->
+
+                                                            <hr>
+                                                            
+
+                                                        </form>
+                                                        <form method="POST" enctype="multipart/form-data">
                                                             <input type="file" name="myfile"><br>
                                                             <input type="hidden" name="AssignmentNo" value="<?php echo $row['AssignmentNo']?>">
                                                             <input type="hidden" name="StudentID" value="<?php echo unserialize($_SESSION['studentProgram'])?>">
 
-                                                            <button class="button btn-bg btn-primary" type="submit" name="save">Upload</button>
-
-                                                            <?php 
-
-                                                                    $_SESSION['uploadAss'] = serialize($row['AssignmentNo']);
-                                                            ?>
-
-                                                        </form>
-
+                                                            <button class="button btn-bg btn-primary" type="submit" name="update">update</button>
+                                                            </form>
 
                                                     </div>
 

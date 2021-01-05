@@ -5,65 +5,59 @@
 
 // echo '$var';
 
-    $con =  new mysqli("localhost","root","","learning_management_system");
-    // if (isset($_GET["data"])) {
-    //     $data = $_GET["data"];
-    // } else {
-    // }
+$con =  new mysqli("localhost", "root", "", "learning_management_system");
+// if (isset($_GET["data"])) {
+//     $data = $_GET["data"];
+// } else {
+// }
 
-    if(isset($_POST['update']))
-    {
-        $filename = $_FILES['myfile']['name'];
-        $dest = 'upload/' .$filename;
-        $extenstion = pathinfo($filename,PATHINFO_EXTENSION);
-        $file = $_FILES['myfile']['tmp_name'];
-        $AssNo = $_POST['AssignmentNo'];
-        $StuID = $_POST['StudentID'];
-        // $size = $_FILES['myfile']['size'];
-        if(!in_array($extenstion, ['zip', 'pdf']))
-        {
-            echo "You can only upload zip, pdf!";
-        }
-        else {
-            if(move_uploaded_file($file, $dest))
-            {
-                $q = "SELECT * FROM uploadassignment where AssignmentNo = $AssNo";
-                $res =  mysqli_query($con,$q);
-                    
-                //     echo '<script>alert("Dear Student Assignment is Already Uploaded")</script>';
-                // }else{
+if (isset($_POST['update'])) {
+    $filename = $_FILES['myfile']['name'];
+    $dest = 'upload/' . $filename;
+    $extenstion = pathinfo($filename, PATHINFO_EXTENSION);
+    $file = $_FILES['myfile']['tmp_name'];
+    $AssNo = $_POST['AssignmentNo'];
+    $StuID = $_POST['StudentID'];
+    // $size = $_FILES['myFile1']['size'];
+    if (!in_array($extenstion, ['zip', 'pdf'])) {
+        echo "You can only upload zip, pdf!";
+    } else {
+        if (move_uploaded_file($file, $dest)) {
 
-                    // $sql = "UPDATE uploadassignment 
-                    //         SET Assignmentfile = '$filename'
-                    //         ";
+            $q = "SELECT * from assignment where  AssignmentNo = $AssNo";
+            $res =  (mysqli_query($con, $q));
+            $row = mysqli_fetch_array($res);
 
-                    if(mysqli_num_rows($res)!=0){
-                        $query = "DELETE FROM uploadassignment
-                        WHERE AssignmentNo = $AssNo";
-                        
+            $q1 = "SELECT * from uploadassignment where StudentID = $StuID and AssignmentNo = $AssNo";
+            $res1 = (mysqli_query($con, $q1));
 
-                    }                    
+            if (strtotime((new DateTime())->format("Y-m-d H:i:s")) < strtotime($row['DueDateTime'])) {
+                // if (mysqli_num_rows($res1) != 0) {
 
-                    if (mysqli_query($con,$query) )
-                    {
-                        $query1 = "INSERT INTO uploadassignment (StudentID,AssignmentNo,Assignmentfile) VALUES($StuID,$AssNo,'$filename')";
-                        if (mysqli_query($con,$query1) )
-                        {
-                            
-                            
+                //     echo "<script>alert('Assignment Already Uploaded');</script>";
+                // } else {
+                    $sql = "DELETE FROM uploadassignment where
+                    AssignmentNo = $AssNo and StudentID = $StuID";
+                    if (mysqli_query($con, $sql)) {
+                        $sql1 = "INSERT INTO uploadassignment (StudentID,AssignmentNo,Assignmentfile) VALUES($StuID,$AssNo,'$filename')";
+                        if (mysqli_query($con, $sql1)) {
+                            echo "<script>alert('Assignment updated Successfully!!');</script>";
+
+                        } else {
+                            echo "<script>alert('Failed to update File');</script>";
                         }
-                        else
-                        {
-                            echo "Failed to upload file";
-                        }
-                        
+                   
+                    } else {
+                        echo "<script>alert('Failed to update File');</script>";
                     }
-                    else
-                    {
-                        echo "Failed to upload file";
-                    }
-                }
+                
+            } else {
 
+                echo "<script>alert('late submission not allowed    ');</script>";
             }
+            // }
         }
-    // }
+    }
+}
+
+?>
