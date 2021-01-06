@@ -64,7 +64,7 @@ session_start();
                             <?php
                             // $title = 'Web Develop';
 
-                            $idd = unserialize($_SESSION['studentProgram']);
+                            $idd = unserialize($_SESSION['teach']);
                             // $var     = $idd->getDeptNo();
 
                             // $var = $_SESSION['studentProgram']
@@ -83,7 +83,7 @@ session_start();
                             //   }
 
                             $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                            $query = " SELECT * FROM registeredCourse where StudentID = '$idd' ";
+                            $query = " SELECT * FROM allotedcourse where TeacherID = '$idd' ";
                             $result = mysqli_query($con, $query);
 
                             // $quariy = $mysqli->query("select * from course ");

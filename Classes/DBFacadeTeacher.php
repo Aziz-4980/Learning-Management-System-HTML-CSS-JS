@@ -46,8 +46,8 @@ class DBFacadeTeacher
 
               $row = mysqli_fetch_assoc($res);
 
-               $manager = new Teacher($row['TeacherID'], $row['DeptNo'], $row['Email'], $row['TeacherName'] ,$row['Designation']);
-              $manager->Display();
+               $teacher = new Teacher($row['TeacherID'], $row['DeptNo'], $row['Email'], $row['TeacherName'] ,$row['Designation']);
+              // $manager->Display();
 
               // echo $manager->getTeacherID();
 
@@ -57,9 +57,15 @@ class DBFacadeTeacher
            
 
             //    $_SESSION['manager'] = serialize($name);
+
+            $id = $teacher->getTeacherID();
+            //    echo "$id";
+            // session_destroy();
+
+               $_SESSION['teach'] = serialize($id);
             
             
-              header("location: ../teacherView.php");
+              header("location: ../teacher.php");
                     
 
            }

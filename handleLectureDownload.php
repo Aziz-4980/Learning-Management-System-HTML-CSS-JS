@@ -15,7 +15,7 @@ $con =  new mysqli("localhost", "root", "", "learning_management_system");
     $data = $stat->fetch();
 
 
-    $file = 'upload/'.$data['lecturefileName'];
+    // $file = 'upload/'.$data['lecturefileName'];
 
 
     if(file_exists($file)){
