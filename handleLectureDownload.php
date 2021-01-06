@@ -7,8 +7,10 @@ $con =  new mysqli("localhost", "root", "", "learning_management_system");
 if(isset($_GET['btn'])){
 
     $id = $_GET['id'];
-    $stat = $con->prepare("SELECT  * from lecture where CourseCode  = ?");
-    $stat->bind_param(1,$id);
+
+    
+    $stat = $con->prepare("SELECT  * from lecture where StudentID  = $StdID and AssignmentNO = $AssNo);
+    // $stat->bind_param(1,$id);
     $stat->execute();
     $data = $stat->fetch();
 
