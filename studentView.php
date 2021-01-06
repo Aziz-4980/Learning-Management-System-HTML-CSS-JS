@@ -91,7 +91,7 @@
                                                     </li>
  
                                                     <li>
-                                                  <a href="./handleLectureDownload.php?id = <?php echo $row['CourseCode']?>"><button type="submit" id="btn" name="btn" class="button btn-bg btn-dark" >Download</button></a>
+                                                  <a download ="./handleLectureDownload.php?id = <?php echo $row['CourseCode']?>" href="./handleLectureDownload.php?id = <?php echo $row['CourseCode']?>"><button type="submit" id="btn" name="btn" class="button btn-bg btn-dark" >Download</button></a>
                                                     </li>
                                                 </ul>
 
@@ -105,11 +105,6 @@
                             </div>
 
                         </div>
-
-
-
-
-
 
                     </div>
                 </div>

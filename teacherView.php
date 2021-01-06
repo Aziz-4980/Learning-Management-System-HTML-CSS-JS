@@ -34,7 +34,128 @@
 
 <body cz-shortcut-listen="true">
     <?php include "./components/Header.html" ?>
+    
+      <!-- *******************view Lecture****************************-->
+      <div id="viewLectureModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title ">View Lectures</h4>
+                    <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row row-content ">
+                        <div class="col-12 col-md-10 offset-1">
+                            <div>
+                                <h3>Lectures</h3>
+                            </div>
+                        </div>
+                        <?php
+                        // $title = 'Web Develop';
+                        $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                        $query = " SELECT * FROM course ";
+                        $result = mysqli_query($con, $query);
 
+                        // $quariy = $mysqli->query("select * from course ");
+                        while ($row = mysqli_fetch_array($result)) :
+
+                        ?>
+                            <main class=" container">
+                                <div class="row">
+                                    <div class=" col-12 col-md-10 offset-1">
+                                        <div class="card">
+                                            <h4 class="card-header">
+
+                                            </h4>
+                                            <div class="card-body" style="color: black;">
+                                                <ul>
+                                                    <li><?php echo $row['CourseCode'] ?>
+
+                                                    </li>
+                                                    <li>
+                                                        <?php echo $row['CourseName'] ?>
+                                                    </li>
+                                                </ul>
+                                                
+                                            </div>
+
+                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+                        <?php
+                        endwhile;
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!------------------------------------------------------------------------------------------------------>
+<!-- *******************view Assignments****************************-->
+<div id="viewAssignmentModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title ">View Assignments</h4>
+                    <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row row-content ">
+                        <div class="col-12 col-md-10 offset-1">
+                            <div>
+                                <h3>Assignments</h3>
+                            </div>
+                        </div>
+                        <?php
+                        // $title = 'Web Develop';
+                        $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                        $query = " SELECT * FROM course ";
+                        $result = mysqli_query($con, $query);
+
+                        // $quariy = $mysqli->query("select * from course ");
+                        while ($row = mysqli_fetch_array($result)) :
+
+                        ?>
+                            <main class=" container">
+                                <div class="row">
+                                    <div class=" col-12 col-md-10 offset-1">
+                                        <div class="card">
+                                            <h4 class="card-header">
+
+                                            </h4>
+                                            <div class="card-body" style="color: black;">
+                                                <ul>
+                                                    <li><?php echo $row['CourseCode'] ?>
+
+                                                    </li>
+                                                    <li>
+                                                        <?php echo $row['CourseName'] ?>
+                                                    </li>
+                                                </ul>
+                                                
+                                            </div>
+
+                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+                        <?php
+                        endwhile;
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--####################################################################################################-->
 
     <main role="main">
         <!-- Marketing messaging and featurettes ================================================== -->
@@ -57,15 +178,15 @@
 
         <div class="row row-content ">
 
-            <div class="col-12 col-md-3 offset-2">
+            <div class="col-12 col-md-2 offset-2">
                <!-- <div>
                     <h3>Software Construction</h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
-                        <div class="col-12 col-md-8">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-success ">Software<br>Construction</button> </a>
+                        <div class="col-12 col-md-12">
+                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-success ">Upload Lecture</button></a>
                         </div>
                     </div>
 
@@ -75,15 +196,15 @@
 
             </div>
 
-            <div class="col-12 col-md-3 ">
+            <div class="col-12 col-md-2 ">
                <!-- <div>
                     <h3>Analysis and Design </h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
-                        <div class="col-12 col-md-8">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-twitter">Operating Systems</button></a>
+                        <div class="col-12 col-md-12">
+                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-twitter">Upload Assignment</button></a>
 
                         </div>
                     </div>
@@ -91,15 +212,30 @@
 
             </div>
 
-            <div class="col-12 col-md-3 ">
+            <div class="col-12 col-md-2 ">
                <!-- <div>
                     <h3>Analysis and Design </h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
-                        <div class="col-12 col-md-8">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-dark">Analysis and Design<br>of Algorithms</button></a>
+                        <div class="col-12 col-md-12">
+                            <button type="button" id="viewLecture" style="height: 150px; width: 100%;" class="btn btn-dark" >View Lectures</button></a>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-12 col-md-2 ">
+               <!-- <div>
+                    <h3>Analysis and Design </h3>
+                </div>-->
+                <form>
+                    <div class="row form-group">
+
+                        <div class="col-12 col-md-12">
+                            <a href="#"> <button type="button" id="viewAssignment" style="height: 150px; width: 100%;" class="btn btn-danger">View Assignments</button></a>
 
                         </div>
                     </div>
@@ -109,9 +245,6 @@
         </div>
 
         <!-- ******************************************************** next row -->
-
-
-
 
     </main>
     <?php include "./components/Footer.html" ?>
