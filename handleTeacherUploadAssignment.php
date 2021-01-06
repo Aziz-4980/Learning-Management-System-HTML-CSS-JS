@@ -19,9 +19,12 @@ if (isset($_POST['upload'])) {
     $AssNo = $_POST['AssignmentNo'];
     $TechID = $_POST['TeacherID'];
     $course = $_POST['CourseCode'];
-    $utime = $_POST['UploadTime'];
+    // $utime = $_POST['UploadTime'];
     $dtime = $_POST['DueTime'];
     $AssTopic = $_POST['AssignmentTopic'];
+
+
+    $utime =  date_default_timezone_get();
 
     // $size = $_FILES['myfile']['size'];
     if (!in_array($extenstion, ['zip', 'pdf'])) {
@@ -41,11 +44,11 @@ if (isset($_POST['upload'])) {
                     echo "<script>alert('Assignment Already Uploaded');</script>";
                 } else {
 
-                    $sql = "INSERT INTO assignment (AssignmentNo ,CourseCode,AssignmentTopic,UploadDateTime,DueDateTime,SubmissionDateTime,AssignmentFile) VALUES($AssNo,$course,$AssTopic,$utime,$dtime,'','$filename')";
-                    if (mysqli_query($con, $sql)) {
-                    } else {
-                        echo "<script>alert('Failed to upload File');</script>";
-                    }
+                    $sql = "INSERT INTO assignment (AssignmentNo,CourseCode,AssignmentTopic,UploadDateTime,DueDateTime,SubmissionDateTime,AssignmentFile) VALUES($AssNo,$course,$AssTopic,$utime,$dtime,'','$filename')";
+                    
+                    // echo $sql;
+                    mysqli_query($con, $sql);    
+                
                 }
             }
         

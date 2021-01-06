@@ -131,6 +131,9 @@
                                     $con =  new mysqli("localhost", "root", "", "learning_management_system");
                                     $query = " SELECT * FROM assignment where CourseCode = $data ";
                                     $result = mysqli_query($con, $query);
+                                    // $row = mysqli_fetch_array($result);
+
+
 
 
                                     // $quariy = $mysqli->query("select * from course ");
@@ -140,9 +143,9 @@
                                     <form method="POST" enctype="multipart/form-data">
 
                                         <input class="col-12" type="text" name="AssignmentNo" value="" placeholder="Assignment No  ">
-                                        <input type="hidden" name="CourseCode" value="<?php echo $row['CourseCode'] ?>">
-                                        <input class="col-12" type="text" name="AssignmentTopic" value="" placeholder="Assignment Topic">
-                                        <input type="hidden" name="UploadTime" value="<?php  echo date_default_timezone_get() ?>">
+                                        <input type="hidden" name="CourseCode" value="<?php echo $data ?>">
+                                        <input class="col-12" type="text" name="AssignmentTopic" value="" placeholder="Assignment Topic  ">
+                                        <input type="hidden" name="UploadTime" value="">
                                         <input class="col-12" type="datetime-local" id="DueTime" name="DueTime" placeholder="Enter Deadline">
                                         <input class="col-12" type="file" name="myfile"><br>
 
