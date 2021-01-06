@@ -36,3 +36,8 @@ $("#viewLecture").click(function() {
 
     $("#viewLectureModal").modal();
 })
+
+$("#uploadAss").click(function() {
+
+    $("#uploadAssignmentModal").modal();
+})
