@@ -35,9 +35,10 @@
 <body cz-shortcut-listen="true">
     <?php include "./components/Header.html" ?>
     <?php include "./handleTeacherUploadAssignment.php"?>
+    <?php include "./teacherLectureUpload.php"?>
 
     <!-- *******************view Lecture****************************-->
-    <div id="viewLectureModal" class="modal fade" role="dialog">
+    <div id="uploadLectureModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <!-- Modal content-->
             <div class="modal-content">
@@ -51,50 +52,52 @@
                             <div>
                                 <h3>Lectures</h3>
                             </div>
-                        </div>
-                        <?php
-                        // $title = 'Web Develop';
-                        $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                        $query = " SELECT * FROM course ";
-                        $result = mysqli_query($con, $query);
 
-                        // $quariy = $mysqli->query("select * from course ");
-                        while ($row = mysqli_fetch_array($result)) :
 
-                        ?>
-                            <main class=" container">
+
+                            <!-- <form method="POST" action="addUser.php"> -->
+                            <div class=" container">
                                 <div class="row">
-                                    <div class=" col-12 col-md-10 offset-1">
-                                        <div class="card">
-                                            <h4 class="card-header">
+                                    <?php
+                                    // $title = 'Web Develop';
 
-                                            </h4>
-                                            <div class="card-body" style="color: black;">
-                                                <ul>
-                                                    <li><?php echo $row['CourseCode'] ?>
+                                    if (isset($_GET["data"])) {
+                                        $data = $_GET["data"];
+                                    } else {
+                                    }
+                                    $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                                    $query = " SELECT * FROM lecture where CourseCode = $data ";
+                                    $result = mysqli_query($con, $query);
 
-                                                    </li>
-                                                    <li>
-                                                        <?php echo $row['CourseName'] ?>
-                                                    </li>
-                                                </ul>
 
-                                            </div>
+                                    // $quariy = $mysqli->query("select * from course ");
+                                    ?>
 
-                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
-                                        </div>
-                                    </div>
+
+                                    <form method="POST" enctype="multipart/form-data">
+
+                                        <input class="col-12" type="text" name="LectureNo" value="" placeholder="Lecture No  ">
+                                        <input type="hidden" name="CourseCode" value="<?php echo $row['CourseCode'] ?>">
+                                        <input class="col-12" type="text" name="LectureTopic" value="" placeholder="Lecture Topic">
+                                        <input type="hidden" name="UploadTime" value="<?php  echo date_default_timezone_get() ?>">
+                                        <input class="col-12" type="file" name="myfile"><br>
+
+                                        
+                                        <input type="hidden" name="TeacherID" value="<?php echo unserialize($_SESSION['teach']) ?>">
+
+                                        <button class="  button btn-bg btn-primary" type="submit" name="upload">upload</button>
+                                    </form>
                                 </div>
-                            </main>
 
-                        <?php
-                        endwhile;
-                        ?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!------------------------------------------------------------------------------------------------------>
     <!-- *******************view Assignments****************************-->
@@ -168,7 +171,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="about-header">
             <div class="col-lg-12 text-center">
-                <h1>Courses List</h1>
+                <h1>Actions</h1>
                 <hr style="background-color: #eee;
             border: 0 none;
             color: #eee;
@@ -191,7 +194,7 @@
                     <div class="row form-group">
 
                         <div class="col-12 col-md-6">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-dark ">Upload Lecture</button></a>
+                            <a href="#"> <button id="uploadLec" data-dismiss="modal" data-toggle="modal" type="button" style="height: 150px; width: 100%;" class="btn btn-dark ">Click here to <br>Upload Lecture</button></a>
                         </div>
                     </div>
 
