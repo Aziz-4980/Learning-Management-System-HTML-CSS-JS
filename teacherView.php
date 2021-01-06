@@ -178,15 +178,15 @@
 
         <div class="row row-content ">
 
-            <div class="col-12 col-md-2 offset-2">
+            <div class="col-12 col-md-5 offset-2">
                <!-- <div>
                     <h3>Software Construction</h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
-                        <div class="col-12 col-md-12">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-success ">Upload Lecture</button></a>
+                        <div class="col-12 col-md-6">
+                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-dark ">Upload Lecture</button></a>
                         </div>
                     </div>
 
@@ -196,46 +196,15 @@
 
             </div>
 
-            <div class="col-12 col-md-2 ">
+            <div class="col-12 col-md-5 ">
                <!-- <div>
                     <h3>Analysis and Design </h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
-                        <div class="col-12 col-md-12">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-twitter">Upload Assignment</button></a>
-
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-            <div class="col-12 col-md-2 ">
-               <!-- <div>
-                    <h3>Analysis and Design </h3>
-                </div>-->
-                <form>
-                    <div class="row form-group">
-
-                        <div class="col-12 col-md-12">
-                            <button type="button" id="viewLecture" style="height: 150px; width: 100%;" class="btn btn-dark" >View Lectures</button></a>
-
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="col-12 col-md-2 ">
-               <!-- <div>
-                    <h3>Analysis and Design </h3>
-                </div>-->
-                <form>
-                    <div class="row form-group">
-
-                        <div class="col-12 col-md-12">
-                            <a href="#"> <button type="button" id="viewAssignment" style="height: 150px; width: 100%;" class="btn btn-danger">View Assignments</button></a>
+                        <div class="col-12 col-md-6">
+                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-danger">Upload Assignment</button></a>
 
                         </div>
                     </div>
