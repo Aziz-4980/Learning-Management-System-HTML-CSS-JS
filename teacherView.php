@@ -194,7 +194,7 @@
                     <div class="row form-group">
 
                         <div class="col-12 col-md-6">
-                            <a href="#"> <button id="uploadLec" data-dismiss="modal" data-toggle="modal" type="button" style="height: 150px; width: 100%;" class="btn btn-dark ">Click here to <br>Upload Lecture</button></a>
+                            <a href="#"> <button id="uploadLec" data-dismiss="modal" data-toggle="modal" href="#uploadLectureModal" type="button" style="height: 150px; width: 100%;" class="btn btn-dark ">Click here to <br>Upload Lecture</button></a>
                         </div>
                     </div>
 

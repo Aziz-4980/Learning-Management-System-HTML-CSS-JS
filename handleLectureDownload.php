@@ -86,6 +86,6 @@ $con =  new mysqli("localhost", "root", "", "learning_management_system");
 //        exit;
 //     }
 //  }
-
+}
 
 ?>
