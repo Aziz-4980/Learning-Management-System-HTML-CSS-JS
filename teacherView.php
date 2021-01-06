@@ -41,7 +41,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title ">Upload Lectures</h4>
+                    <h4 class="modal-title ">View Lectures</h4>
                     <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -102,7 +102,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title ">Upload Assignments</h4>
+                    <h4 class="modal-title ">View Assignments</h4>
                     <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
                 </div>
                 <div class="modal-body">
