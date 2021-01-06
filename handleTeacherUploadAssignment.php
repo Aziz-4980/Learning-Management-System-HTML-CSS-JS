@@ -36,16 +36,13 @@ if (isset($_POST['upload'])) {
             $q1 = "SELECT * from assignment where CourseCode = $course and AssignmentNo = $AssNo";
             $res1 = (mysqli_query($con, $q1));
 
-                if (mysqli_num_rows($res1)) {
-
-                    echo "<script>alert('Assignment Already Uploaded');</script>";
-                } else {
+                // } else {
                     $sql = "INSERT INTO assignment (AssignmentNo ,CourseCode ,AssignmentTopic,  UploadDateTime, DueDateTime, SubmissionDateTime, AssignmentFile) VALUES($AssNo,$course,$AssTopic,$utime,$dtime,'','$filename')";
                     if (mysqli_query($con, $sql)) {
                     } else {
                         echo "<script>alert('Failed to upload File');</script>";
                     }
-                }
+                // }
             
             // }
         }   
