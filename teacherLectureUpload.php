@@ -24,7 +24,7 @@ if (isset($_POST['save'])) {
     } else {
         if (move_uploaded_file($file, $dest)) {
 
-            $q = "SELECT * from assignment where  AssignmentNo = $AssNo";
+            $q = "SELECT * from lecture where  CourseCode = $id";
             $res =  (mysqli_query($con, $q));
             $row = mysqli_fetch_array($res);
 
