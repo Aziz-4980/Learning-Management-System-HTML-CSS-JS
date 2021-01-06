@@ -26,17 +26,18 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/carousel/carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./CSS/styles.css">
-   
-        
+
+
 
 </head>
 
 
 <body cz-shortcut-listen="true">
     <?php include "./components/Header.html" ?>
-    
-      <!-- *******************view Lecture****************************-->
-      <div id="viewLectureModal" class="modal fade" role="dialog">
+    <?php include "./handleTeacherUploadAssignment.php"?>
+
+    <!-- *******************view Lecture****************************-->
+    <div id="viewLectureModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <!-- Modal content-->
             <div class="modal-content">
@@ -77,7 +78,7 @@
                                                         <?php echo $row['CourseName'] ?>
                                                     </li>
                                                 </ul>
-                                                
+
                                             </div>
 
                                             <div class="card-footer"><?php echo $row['CourseName'] ?></div>
@@ -95,14 +96,14 @@
         </div>
 
     </div>
-<!------------------------------------------------------------------------------------------------------>
-<!-- *******************view Assignments****************************-->
-<div id="viewAssignmentModal" class="modal fade" role="dialog">
+    <!------------------------------------------------------------------------------------------------------>
+    <!-- *******************view Assignments****************************-->
+    <div id="uploadAssignmentModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title ">View Assignments</h4>
+                    <h4 class="modal-title ">Upload Assignments</h4>
                     <button type="button" class="close" data-dismiss="modal" id="modal-button">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -111,51 +112,55 @@
                             <div>
                                 <h3>Assignments</h3>
                             </div>
-                        </div>
-                        <?php
-                        // $title = 'Web Develop';
-                        $con =  new mysqli("localhost", "root", "", "learning_management_system");
-                        $query = " SELECT * FROM course ";
-                        $result = mysqli_query($con, $query);
 
-                        // $quariy = $mysqli->query("select * from course ");
-                        while ($row = mysqli_fetch_array($result)) :
 
-                        ?>
-                            <main class=" container">
+
+                            <!-- <form method="POST" action="addUser.php"> -->
+                            <div class=" container">
                                 <div class="row">
-                                    <div class=" col-12 col-md-10 offset-1">
-                                        <div class="card">
-                                            <h4 class="card-header">
+                                    <?php
+                                    // $title = 'Web Develop';
 
-                                            </h4>
-                                            <div class="card-body" style="color: black;">
-                                                <ul>
-                                                    <li><?php echo $row['CourseCode'] ?>
+                                    if (isset($_GET["data"])) {
+                                        $data = $_GET["data"];
+                                    } else {
+                                    }
+                                    $con =  new mysqli("localhost", "root", "", "learning_management_system");
+                                    $query = " SELECT * FROM assignment where CourseCode = $data ";
+                                    $result = mysqli_query($con, $query);
 
-                                                    </li>
-                                                    <li>
-                                                        <?php echo $row['CourseName'] ?>
-                                                    </li>
-                                                </ul>
-                                                
-                                            </div>
 
-                                            <div class="card-footer"><?php echo $row['CourseName'] ?></div>
-                                        </div>
-                                    </div>
+                                    // $quariy = $mysqli->query("select * from course ");
+                                    ?>
+
+
+                                    <form method="POST" enctype="multipart/form-data">
+
+                                        <input class="col-12" type="text" name="AssignmentNo" value="" placeholder="Assignment No  ">
+                                        <input type="hidden" name="CourseCode" value="<?php echo $row['CourseCode'] ?>">
+                                        <input class="col-12" type="text" name="AssignmentTopic" value="" placeholder="Assignment Topic">
+                                        <input type="hidden" name="UploadTime" value="<?php  echo date_default_timezone_get() ?>">
+                                        <input class="col-12" type="datetime-local" id="DueTime" name="DueTime" placeholder="Enter Deadline">
+                                        <input class="col-12" type="file" name="myfile"><br>
+
+                                        
+                                        <input type="hidden" name="TeacherID" value="<?php echo unserialize($_SESSION['teach']) ?>">
+
+                                        <button class="  button btn-bg btn-primary" type="submit" name="upload">upload</button>
+                                    </form>
                                 </div>
-                            </main>
 
-                        <?php
-                        endwhile;
-                        ?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<!--####################################################################################################-->
+    <!--####################################################################################################-->
 
     <main role="main">
         <!-- Marketing messaging and featurettes ================================================== -->
@@ -179,7 +184,7 @@
         <div class="row row-content ">
 
             <div class="col-12 col-md-5 offset-2">
-               <!-- <div>
+                <!-- <div>
                     <h3>Software Construction</h3>
                 </div>-->
                 <form>
@@ -197,15 +202,15 @@
             </div>
 
             <div class="col-12 col-md-5 ">
-               <!-- <div>
+                <!-- <div>
                     <h3>Analysis and Design </h3>
                 </div>-->
                 <form>
                     <div class="row form-group">
 
                         <div class="col-12 col-md-6">
-                            <a href="#"> <button type="button" style="height: 150px; width: 100%;" class="btn btn-danger">Upload Assignment</button></a>
-
+                            <button type="button" id="uploadAss" data-dismiss="modal" data-toggle="modal" href="#uploadAssignmentModal" style="height: 150px; width: 100%;" class="btn btn-warning">Click
+                                here to <br> upload Assignment </button>
                         </div>
                     </div>
                 </form>
