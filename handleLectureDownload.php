@@ -62,25 +62,30 @@ $con =  new mysqli("localhost", "root", "", "learning_management_system");
 
      if(file_exists($filepath))
     {
+        header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-
-        header('Content-Description: File-Transfer');
-         header('Content-Disposition: attachement; filename=' . basename($filepath));
-
-        header('Expires : 0');
-
+        header('Content-Disposition: attachment; filename="'.basename($filepath).$file);
+        header('Expires: 0');
         header('Cache-Control: must-revalidate');
-         header('Pragma: public');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($filepath));
+        flush(); // Flush system output buffer
+        readfile($filepath);
+        die();
+    } else {
+        http_response_code(404);
+        die();
+    }
+//          header('Content-Length:' .filesize('upload/' . $file['lecturefileName']));
 
-         header('Content-Length:' .filesize('upload/' . $file['lecturefileName']));
 
-       readfile('upload/' . $file['lecturefileName']);
+//        readfile($filepath);
 
        
-        mysqli_query($con,$updatQuery);
-       exit;
-    }
- }
+//         mysqli_query($con,$updatQuery);
+//        exit;
+//     }
+//  }
 
 
 ?>
