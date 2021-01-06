@@ -28,7 +28,7 @@ if (isset($_POST['save'])) {
             $res =  (mysqli_query($con, $q));
             $row = mysqli_fetch_array($res);
 
-            $q1 = "SELECT * from uploadassignment where StudentID = $StuID and AssignmentNo = $AssNo";
+            $q1 = "SELECT * from lecture where CourseCode = $StuID and AssignmentNo = $AssNo";
             $res1 = (mysqli_query($con, $q1));
 
             if (strtotime((new DateTime())->format("Y-m-d H:i:s")) < strtotime($row['DueDateTime'])) {

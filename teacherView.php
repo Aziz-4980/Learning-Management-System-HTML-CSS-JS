@@ -35,7 +35,7 @@
 <body cz-shortcut-listen="true">
     <?php include "./components/Header.html" ?>
     <?php include "./handleTeacherUploadAssignment.php"?>
-    <?php include "./teacherLectureUpload.php"?>
+    <!-- <?php include "./teacherLectureUpload.php"?> -->
 
     <!-- *******************view Lecture****************************-->
     <div id="uploadLectureModal" class="modal fade" role="dialog">
