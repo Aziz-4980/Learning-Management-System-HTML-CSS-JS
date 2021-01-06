@@ -40,6 +40,7 @@ if (isset($_POST['upload'])) {
 
                     echo "<script>alert('Assignment Already Uploaded');</script>";
                 } else {
+
                     $sql = "INSERT INTO assignment (AssignmentNo ,CourseCode ,AssignmentTopic,  UploadDateTime, DueDateTime, SubmissionDateTime, AssignmentFile) VALUES($AssNo,$course,$AssTopic,$utime,$dtime,'','$filename')";
                     if (mysqli_query($con, $sql)) {
                     } else {
